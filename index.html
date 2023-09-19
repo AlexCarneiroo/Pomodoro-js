@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://kit.fontawesome.com/5a2530d22f.js"  crossorigin="anonymous"></script>
+
+    <div>
+        
+        <title>Pomodoro</title>
+    </div>
+</head>
+<body>
+    <div class="Container">
+
+        <div class="section">
+            <span class="pomodoro">Pomodoro</span>
+            <span class="pausaC">Pausa Curta</span>
+        </div>
+
+        <div class="timer" style="display: flex; align-items: center;">
+            <h1 id="min">30</h1>
+            <span id="spanTimer">:</span>
+            <h1 id="seg">00</h1>
+        </div>
+
+    
+<!--          <input type="number" id="Imin" placeholder="Minutos">
+     <input type="number" id="Iseg" placeholder="Segundos">
+    --> 
+
+        <div class="Btn" style="display: flex; align-items: center;">
+            <button id="comeca">Começar</button>
+            <button id="PausaClear">Pausar</button>
+            <i class="fa-solid fa-gear" id="activeModal"></i>    
+        </div>
+
+    <div id="modal" class="modal">
+        <div class="conteudo">
+            <h1>Configuração</h1>
+
+            <i class="fa-solid fa-circle-xmark" id="closeModal"></i>
+
+            <div class="inputTime">
+                <label for="">Pomodoro</label>
+                <input type="number" style="color: black;">
+                <label for="">Pomodoro</label>
+                <input type="number" style="color: black;">
+                <label for="">Pomodoro</label>
+                <input type="number" style="color: black;">
+            </div>
+        </div>
+    </div>
+
+    <div class="modalNotification">
+        <div class="content-notifi">
+            <i class="fa-solid fa-bell"></i>
+
+            <div class="alerta">
+                <h1>O Tempo do Pomodoro Terminou Vamos para uma <span style="color:#EF5350 ;">Pausa Curta</span></h1>
+                <h2>05:00</h2>
+            </div>
+
+            <div class="alertaPomodoro">
+                <h1>O Tempo do Pausa curta Terminou Vamos para uma <span style="color:#5C6BC0 ;">Pomodoro</span></h1>
+                <h2>25:00</h2>
+                <h3></h3>
+            </div>
+
+            <button id="btnN">Ok</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
