@@ -35,7 +35,7 @@ const pausaStyle = document.querySelector(".pausaC")
 min.innerText = minutos
 
 const luup = ()=>{
-    if(segundos === 0){
+    if(segundos == 0){
         minutos--
         segundos = 60
     }
@@ -102,11 +102,11 @@ const handlComeca = ()=>{
             
             // Verificar Timer
             if(minutos === -0 && segundos === -0){
+                clearInterval(loop)
                 modalNotifil.style.display='flex'
                 minutos = pomodoro;
                 alertaPomodoro.style.display = "flex";
                 alerta.style.display='none'
-                clearInterval(loop)
 
                 min.style.color='#5C6BC0'
                 seg.style.color='#5C6BC0'
