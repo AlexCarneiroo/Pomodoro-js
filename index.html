@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 
-    <script src="https://kit.fontawesome.com/5a2530d22f.js"  crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5a2530d22f.js" defer crossorigin="anonymous"></script>
 
     <div>
         
@@ -13,8 +13,10 @@
     </div>
 </head>
 <body>
+    <div class="divulgacao">
+        <a href="https://github.com/AlexCarneiroo/Pomodoro-js" target="_blank"><i class="fa-brands fa-github"></i></a>
+    </div>
     <div class="Container">
-
         <div class="section">
             <span class="pomodoro">Pomodoro</span>
             <span class="pausaC">Pausa Curta</span>
@@ -34,6 +36,8 @@
         <div class="Btn" style="display: flex; align-items: center;">
             <button id="comeca">Começar</button>
             <button id="PausaClear">Pausar</button>
+
+            <!--CONFIGURAÇÃO-->
             <i class="fa-solid fa-gear" id="activeModal"></i>    
         </div>
 
@@ -44,13 +48,19 @@
             <i class="fa-solid fa-circle-xmark" id="closeModal"></i>
 
             <div class="inputTime">
-                <label for="">Pomodoro</label>
-                <input type="number" style="color: black;">
-                <label for="">Pomodoro</label>
-                <input type="number" style="color: black;">
-                <label for="">Pomodoro</label>
-                <input type="number" style="color: black;">
+                <div class="inputs">
+                    <label for="" style="color: #5C6BC0;">Pomodoro</label>
+                    <input type="number" id="valuePomo" style="border:2px solid #5C6BC0;" min="5" max="60">
+                </div>
+                <div class="inputs">
+                    <label for="" style="color: #EF5350;">Pausa Curta</label>
+                    <input type="number" id="valuePaus" style="border: 2px solid #EF5350" min="1" max="30">
+                </div>
             </div>
+            
+            
+            <button id="salvar">Salvar</button>
+            <h2 id="alertaConfi">Adicione um numero entre 1 - 60</h2>
         </div>
     </div>
 
@@ -60,12 +70,12 @@
 
             <div class="alerta">
                 <h1>O Tempo do Pomodoro Terminou Vamos para uma <span style="color:#EF5350 ;">Pausa Curta</span></h1>
-                <h2>05:00</h2>
+                <h2 class="aP">05:00</h2>
             </div>
 
             <div class="alertaPomodoro">
                 <h1>O Tempo do Pausa curta Terminou Vamos para uma <span style="color:#5C6BC0 ;">Pomodoro</span></h1>
-                <h2>25:00</h2>
+                <h2 class="aPa">25:00</h2>
                 <h3></h3>
             </div>
 

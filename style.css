@@ -12,6 +12,24 @@ body{
     display: flex;
     align-items: center;
     background-color: #242424;
+    position: relative;
+}
+
+.divulgacao{
+    display: flex;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    
+}
+.divulgacao i{
+    font-size: 1.7rem;
+    color: #B0BEC5;
+    transition: .2s ease-in-out;
+    &:hover{
+        transform: scale(1.1);
+        color: #EEEEEE;
+    }
 }
 
 .Container{
@@ -25,6 +43,10 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @media (max-width:550px) {
+        max-width: 400px;
+    }
 }
 
 
@@ -35,7 +57,6 @@ body{
     display: flex;
     justify-content: space-around;
 }
-
 .section .pomodoro{
     background-color:#5C6BC0;
     font-weight: bold;
@@ -50,18 +71,32 @@ body{
     background-color: #FF7043;
 }
 .section span{
-    padding: 10px 10px;
+    padding: 7px 10px;
     border-radius: 10px;
+    font-size: .9rem;
+
+    @media (max-width:400px) {
+        padding: 5px;
+        font-size: .7rem;
+    }
 
 }
 
 .Container .timer h1{
     font-size: 8rem;
     color: #5C6BC0;
+
+    @media (max-width:450px) {
+        font-size: 5rem;
+    }
 }
 .Container .timer span{
     font-size: 5rem;
     color: #5C6BC0;
+
+    @media (max-width:450px) {
+        font-size: 3rem;
+    }
 }
 
 .Container .timer{
@@ -71,7 +106,7 @@ body{
 .Container button{
     color: #212121;
     font-size: 1.2rem;
-    padding: 10px 20px;
+    padding: 7px 20px;
     background-color: #BDBDBD;
     border: none;
     border-radius: 5px;
@@ -81,6 +116,10 @@ body{
 
     &:hover{
         background-color: #bdbdbd87;  
+    }
+
+    @media (max-width:550px) {
+        padding: 6px 10px;
     }
 }
 
@@ -96,6 +135,7 @@ body{
     }
 }
 
+/* Modal de Configuração*/
 .modal{
     position: absolute;
     top: 0;
@@ -109,14 +149,36 @@ body{
     align-items: center;
 }
 
-/* Modal de Configuração*/
 
 .modal .conteudo{
     width: 100%;
     max-width: 500px;
+    height: 300px;
     background-color: #242424;
     text-align: center;
     position: relative;
+
+    @media (max-width:525px) {
+        max-width: 300px;
+    }
+    @media (max-width:350px) {
+        max-width: 250px;
+    }
+
+}
+
+.modal .conteudo h1{
+    margin: 10px 0 20px 0;
+}
+
+.modal .conteudo h2{
+    color: #F00;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin: 10px 0;
+    display: none;
+    justify-content: center;
+    text-align: center;
 }
 
 .modal .conteudo i{
@@ -130,10 +192,32 @@ body{
 }
 
 .modal .conteudo .inputTime{
+    width: 100%;
+    max-width: 400px;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 0 auto;
 }
 
+.modal .conteudo .inputTime .inputs{
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;    
+}
+
+.modal .conteudo .inputTime .inputs input{
+    padding: 5px;
+    font-size: 1rem;
+    border-radius: 5px;
+    outline: none;
+    color: #242424;
+    margin-top: 5px;
+    &::placeholder{
+        font-size: 12px;
+    }
+}
 
 /* Modal de Noticicação!*/
 
@@ -154,12 +238,11 @@ body{
 .modalNotification .content-notifi{
     width: 100%;
     max-width: 400px;
-    height: 450px;
-    background-color: #FFF;
+    background-color: #F5F5F5;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 12px;
+    padding: 10px 20px;
     border-radius: 5px;
 }
 .modalNotification .content-notifi i{

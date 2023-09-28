@@ -1,5 +1,5 @@
-const min = document.getElementById('min')
-const seg = document.getElementById('seg')
+let min = document.getElementById('min')
+let seg = document.getElementById('seg')
 const inputMin = document.querySelector('#Imin')
 const inputSeg = document.querySelector('#Iseg')
 const button = document.querySelector('#comeca')
@@ -14,11 +14,17 @@ let pausaCurta = 5;
 let minutos = pomodoro;
 let segundos = 0;
 
-let title = document.querySelector('title')
+
+//CONFIGURAÇÃO
 const closeModal = document.querySelector('#closeModal')
 const activeModal = document.querySelector('#activeModal')
 const modal = document.getElementById('modal')
-const audioalarme = new Audio("alarme.mp3")
+const valuePomo = document.getElementById('valuePomo')
+const valuePaus = document.getElementById('valuePaus')
+const alertaConfi = document.getElementById('alertaConfi')
+const salvar = document.getElementById('salvar')
+let valuepausa;
+let valuepomodoro;
 
 //notificação
 const modalNotifil = document.querySelector('.modalNotification')
@@ -29,6 +35,7 @@ const alertaPomodoro = document.querySelector('.alertaPomodoro')
 
 
 // styles
+const audioalarme = new Audio("alarme.mp3")
 const span = document.getElementById('spanTimer')
 const pomodoroStyle = document.querySelector('.pomodoro')
 const pausaStyle = document.querySelector(".pausaC")
@@ -54,7 +61,6 @@ const luup = ()=>{
         min.textContent = "0"+minutos
     }else{
         min.textContent = minutos
-        
     }
 }
 
@@ -72,12 +78,12 @@ const validateFinal = ()=>{
 const handlComeca = ()=>{
     button.style.display='none'
     PausaClear.style.display='flex'
+    
 
     if(minutos == pomodoro){
         loop = setInterval(()=>{
 
             luup()
-            
             // Verificar Timer
             if(minutos === -0 && segundos === -0){
                 
@@ -122,17 +128,25 @@ const handlComeca = ()=>{
 }
 
 
+const updateNumbersPausa = (valor)=>{
+    const va = document.querySelector('.aP')
+    if(valor < 10){
+        va.innerText = `0${valor}:00`
+    }else{
+        va.innerText = `${valor}:00`
+    }
+}
+
+const updateNumbersPomodoro = (valor)=>{
+    const vas = document.querySelector('.aPa')
+    if(valor < 10){
+        vas.innerText = `0${valor}:00`
+    }else{
+        vas.innerText = `${valor}:00`
+    }
+}
+
 button.addEventListener('click' , handlComeca)
-// inputMin.addEventListener('input' , (e)=>{
-//     valor = e.target.value
-//     minutos = valor
-//     min.textContent = minutos
-// })
-// inputSeg.addEventListener('input' , (e)=>{
-//     valor = e.target.value
-//     segundos = valor
-//     seg.textContent = segundos
-// })
 
 closeModal.addEventListener('click' , ()=>{
     modal.style.display='none'
@@ -150,4 +164,75 @@ PausaClear.addEventListener('click' , ()=>{
     PausaClear.style.display='none'
     button.style.display='flex'
     clearInterval(loop)
+})
+
+
+// configuração
+
+/*input pomodoro*/ 
+valuePomo.addEventListener('input' , (e)=>{
+    valuepomodoro = e.target.value
+
+    if(valuepomodoro > 60){
+        alertaConfi.style.display='flex'
+    }else{
+        alertaConfi.style.display='none'
+    }
+    
+    if(valuePomo.value.length > 2){
+        valuePomo.value = valuePomo.value.slice(0,2)
+        return
+    }
+
+    updateNumbersPomodoro(valuepomodoro)
+
+
+})
+
+/*input PAUSA CURTA*/
+valuePaus.addEventListener('input' , (e)=>{
+
+    valuepausa = e.target.value
+
+    if(valuepausa > 60){
+        alertaConfi.style.display='flex'
+    }else{
+        alertaConfi.style.display='none'
+    }
+
+    if(valuePaus.value.length > 2){
+        valuePaus.value = valuePaus.value.slice(0,2)
+        return
+    }
+
+    updateNumbersPausa(valuepausa)
+})
+
+salvar.addEventListener('click' ,()=>{
+    if(valuePomo.value === '' || valuePaus.value === ''){
+        console.log("Errro1")
+        alert('imposivel salvar campos vazios')
+        return
+    }else{
+        if(valuepausa > 60 || valuepomodoro > 60){
+            console.log('Erro')
+        }else{
+            pomodoro = valuepomodoro
+            minutos = pomodoro
+            pausaCurta = valuepausa
+            modal.style.display='none'
+            
+            if(minutos < 10){
+                min.textContent = "0"+minutos
+            }else{
+                min.textContent = minutos
+            }
+        }
+    }
+
+} )
+
+
+activeModal.addEventListener('click' , ()=>{
+    modal.style.display='flex'
 })
